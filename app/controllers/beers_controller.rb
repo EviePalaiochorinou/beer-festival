@@ -21,6 +21,26 @@ class BeersController < ApplicationController
 		render json: beer_object
 	end
 
+  def get_beers
+		begin
+			beers = @beer_client.get_beers
+		rescue Exception => e
+			if e.message == "Beers unreachable"
+				return render json: {'message': 'Cannot serve you beers right now'}, status: :service_unavailable
+			else
+				return render json: {'message': 'Shop is closed'}, status: :internal_server_error
+			end
+		end
+
+		converted_beers = []
+		beers.each do |beer|
+			converted_beer = convert_beer(beer)
+			converted_beers.push(converted_beer)
+		end
+		
+		render json: converted_beers
+	end
+
   private
   def convert_beer(beer)
 		converted_beer = {
