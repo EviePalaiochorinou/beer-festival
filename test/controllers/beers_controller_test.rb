@@ -1,6 +1,7 @@
 require_relative "../test_helper"
-require_relative "../../spec/spec_helper"
 require_relative "../../spec/rails_helper"
+require_relative "../../spec/spec_helper"
+
 class BeersControllerTest < ActionDispatch::IntegrationTest
 
   # Was the web request successful?
