@@ -42,8 +42,9 @@ http://127.0.0.1:3000/beers?name=buzz
 
 ## Testing
 
-In order to Test-Drive my application, for every new API endpoint, I first write a simple controller test with the expectation of successful HTTP response.
-I chose to go with integration tests over unit tests, so requests tests were the best kind to go forward with. All requests to the third-party API are mocked, since The Punk API has a rate limit, and in real life we would not make real HTTP requests for every test every time.
+In order to Test-Drive my application, for every new API endpoint, I first write a simple controller test with the expectation of successful HTTP response.  
+I chose to go with integration tests over unit tests, so requests tests were the best kind to go forward with.  
+All requests to the third-party API are mocked, since The Punk API has a rate limit, and in real life we would not make real HTTP requests for every test every time.
 
 In order to run the 2 different test files:
 
@@ -62,20 +63,20 @@ rest-client
 rspec-rails
 ```
 
-* Extra question:
-- What happens if in a couple of months, we are asked to get beers from 2 different external APIs? What would we have to change?
+## Extra question:
+- What happens if in a couple of months, we are asked to get beers from 2 different external APIs? What would we have to change?  
 
-If we want to add another source:
+If we want to add another source:  
 
-Get one beer:
+Get one beer:  
 Would look in both sources before raising 404
 
-Get all:
+Get all:  
 Would grab all beers from all sources, then deduplicate and return the enriched set of beers
 
-Search:
+Search:  
 Would search on all sources and consolidate/deduplicate results
 
-On all:
+On all:  
 If one source is unreachable, then try the other one(s), and fail only if all of them fail
 
