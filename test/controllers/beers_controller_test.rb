@@ -9,11 +9,13 @@ class BeersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # Was the correct response given?
   test "should get all beers" do
     get "/beers"
-    print(response.body)
     assert_response :success
-    expect(JSON.parse(response.body)).to equal()
+  end
+
+  test "should respond with info about beer with given name" do
+    get "/beers?name=buzz"
+    assert_response :success
   end
 end
