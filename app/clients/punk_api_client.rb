@@ -13,4 +13,13 @@ class PunkAPIClient
 		beers = JSON.parse(response.body, {:symbolize_names => true})
 	end
 
+	def get_beers
+		
+		begin
+				response = RestClient.get(@@base_url+"/beers")
+		rescue RestClient::InternalServerError => e
+				raise Exception.new "Beers unreachable"
+		end
+		beers = JSON.parse(response.body, {:symbolize_names => true})
+	end
 end

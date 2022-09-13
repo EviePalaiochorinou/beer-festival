@@ -24,4 +24,6 @@ class BeersController < ApplicationController
 		}
 		render json: converted_beer
 	end
+
+  
 end
