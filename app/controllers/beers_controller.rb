@@ -16,14 +16,18 @@ class BeersController < ApplicationController
 				return render json: {'message': 'Shop is closed'}, status: :internal_server_error
 			end
 		end
-		beer_object = (beers[0])
-    converted_beer = {
-			"identifier": beer_object[:id],
-			"name": beer_object[:name],
-			"description": beer_object[:description]
-		}
-		render json: converted_beer
+
+		beer_object = convert_beer(beers[0])
+		render json: beer_object
 	end
 
-  
+  private
+  def convert_beer(beer)
+		converted_beer = {
+			"identifier": beer[:id],
+			"name": beer[:name],
+			"description": beer[:description]
+		}
+		return converted_beer
+	end
 end
