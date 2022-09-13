@@ -1,3 +1,4 @@
+# A class wrapper around PunkAPI resful sevice
 class PunkAPIClient
 	@@base_url = "https://api.punkapi.com/v2"
 
@@ -13,6 +14,7 @@ class PunkAPIClient
 		beers = JSON.parse(response.body, {:symbolize_names => true})
 	end
 
+	# Supports retrieval of both all beers and filtered beer set
 	def get_beers(with_name=nil)
 		params = {}
 		if !with_name.nil?
