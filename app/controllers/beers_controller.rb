@@ -32,16 +32,20 @@ class BeersController < ApplicationController
 			end
 		end
 
-		converted_beers = []
-		beers.each do |beer|
-			converted_beer = convert_beer(beer)
-			converted_beers.push(converted_beer)
-		end
-		
-		render json: converted_beers
+		new_response = convert_beers(beers)
+		render json: new_response
 	end
 
   private
+  def convert_beers(raw_beers)
+		converted_beers = []
+		raw_beers.each do |beer|
+			converted_beer = convert_beer(beer)
+			converted_beers.push(converted_beer)
+		end
+		return converted_beers
+	end
+
   def convert_beer(beer)
 		converted_beer = {
 			"identifier": beer[:id],
